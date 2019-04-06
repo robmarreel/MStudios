@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Weather API Documentation</title>
+
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="./assets/css/docs_style.css">
+  </head>
+  <body>
+    <a id="skip-to-content" href="https://pages-themes.github.io/cayman/#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Real Weather Unity Plugins</h1>
+      <h2 class="project-tagline">Below are examples and API docs for both the Real Weather system and Real Weather Particle system.</h2>
+      
+        <a href="index.html" class="btn">Home</a> 
+        <a href="docs.html" class="btn">Getting Started</a>            
+        <a href="weatherAPI.html" class="btn">Real Weather API Docs</a>
+        <a href="rwp_docs.html" class="btn">Real Weather Particle Docs</a>            
+    </header>
+
+    <main id="content" class="main-content" role="main">
+
+      <h2 id="header-2">RealWeather API</h2>
+      <p>The following is the full listing of the methods that you can call upon from your code. </p>
+        <dd><a href="#getUsersWeather">getUsersWeather</a></dd>
+        <dd><a href="#getWeatherFromZip">getWeatherFromZip</a></dd>
+        <dd><a href="#getWeatherFromCityName">getWeatherFromCityName</a></dd>
+        <dd><a href="#getWeatherFromLatLon">getWeatherFromLatLon</a></dd>
+        <dd><a href="#getWeatherFromCityID">getWeatherFromCityID</a></dd>
+        
+      
+      <h2 id="header-2">Code lists</h2>
+      <p>These are useful lists that you will come across using the API. </p>
+        <dd><a href="#getWeatherFromCityID">City ID list</a></dd>
+        <dd><a href="#getWeatherFromCityID">Full weather code list</a></dd>
+        <dd><a href="#getWeatherFromCityID">Short weather code list</a></dd>
+      </p>
+      <hr>
+
+      <!-- API Docs begin -->
+      <p>
+        <h2 id="header-2">API Details</h2>
+        <h3 id="header-3">getUsersWeather</h3>
+        
+        <p><b>Description: </b><br>This method is used to get the users local weather by looking up that lat/lon from the location services if it is a mobile device or from the IP lookup system if you have entered that API key in to the system.        
+        <p><b>Method: </b><br>getUsersWeather(Action&lt;UserLocationData&gt; successCallback)</p>
+        <p>
+          <b>Input parameters:</b>
+          <dd><b><i>successCallback</i></b> - A standard Unity Action callback for when the method completes. Use this to update your application with the new data.</dd>
+        </p>        
+      </p>
+
+      
+
+      <hr>
+      <p>
+        <h3 id="header-3">getWeatherFromZip</h3>
+        
+        <p><b>Description: </b><br>This method is used to get the users local weather by looking it up via a city name. This will work internationally as long as a country code is passed in. If the city is not found an error will be returned in the log.        
+        <p><b>Method: </b><br>getWeatherFromZip(string zip, string country, Action<WeatherData> successCallback)</p>
+        <p>
+          <b>Input parameters:</b>
+          <dd><b><i>zip</i></b> - The zip code to lookup.</dd>
+          <dd><b><i>country</i></b> - The country that the zipcode exists in. Ex: US, CA, FR.</dd>
+          <dd><b><i>successCallback</i></b> - A standard Unity Action callback for when the method completes. Use this to update your application with the new data.</dd>
+        </p>        
+      </p>
+
+      <hr>
+      <p>
+        <h3 id="header-3">getWeatherFromCityName</h3>
+        
+        <p><b>Description: </b><br>This method is used to get the users local weather by looking it up via their zip code. This will work internationally as long as a country code is passed in.        
+        <p><b>Method: </b><br>getWeatherFromCityName(string cityName, string country, Action<WeatherData> successCallback)</p>
+        <p>
+          <b>Input parameters:</b>
+          <dd><b><i>cityName</i></b> - The city name to lookup.</dd>
+          <dd><b><i>country</i></b> - The country that the zipcode exists in. Ex: US, CA, FR.</dd>
+          <dd><b><i>successCallback</i></b> - A standard Unity Action callback for when the method completes. Use this to update your application with the new data.</dd>
+        </p>        
+      </p>
+
+      <hr>
+      <p>
+        <h3 id="header-3">getWeatherFromLatLon</h3>
+        
+        <p><b>Description: </b><br>This method is used to get the weather for a specific location using lat/lon. Lat must be in the range of -90 to 90 and Lon must be in the range of -180 to 180.       
+        <p><b>Method: </b><br>getWeatherFromLatLon(float lat, float lon, Action<WeatherData> successCallback)</p>
+        <p>
+          <b>Input parameters:</b>
+          <dd><b><i>lat</i></b> - The latitude.</dd>
+          <dd><b><i>lon</i></b> - The longitude.</dd>
+          <dd><b><i>successCallback</i></b> - A standard Unity Action callback for when the method completes. Use this to update your application with the new data.</dd>
+        </p>        
+      </p>
+
+      <hr>
+      <p>
+        <h3 id="header-3">getWeatherFromCityID</h3>
+        
+        <p><b>Description: </b><br>This method is used to get the weather for a specific city based on the city IDs defined by the OpenMapWeather system. The full city list can be found <a href="http://bulk.openweathermap.org/sample/">here</a>.       
+        <p><b>Method: </b><br>getWeatherFromLatLon(float lat, float lon, Action<WeatherData> successCallback)</p>
+        <p>
+          <b>Input parameters:</b>
+          <dd><b><i>lat</i></b> - The latitude.</dd>
+          <dd><b><i>lon</i></b> - The longitude.</dd>
+          <dd><b><i>successCallback</i></b> - A standard Unity Action callback for when the method completes. Use this to update your application with the new data.</dd>
+        </p>        
+      </p>
+
+      <hr>
+      <h2 id="header-2">Code Lists</h2>
+      <h3>City Codes</h3>
+      <p>If you want an unambiguous way to look up a specific city without room for error then the city ID is the safest way to go about that. There are two ways to go about finding the city ID:
+        <ol>
+          <li>Download the full city ID list at <a href="http://bulk.openweathermap.org/sample/">http://bulk.openweathermap.org/sample/</a>
+          <li>Use the OpenWeatherMap search system at <a href="https://openweathermap.org/find">https://openweathermap.org/find</a>. The search system will provide you with the lat/lon of that city and if you click in to the city you can get the city ID from the URL.</li>
+        </ol>
+      </p>
+      <hr>
+      <h3>Full weather codes</h3>
+      <p>
+      <table class="table table-bordered">
+    
+    <thead>
+        <th>ID</th>
+        <th>Meaning</th>        
+    </thead>
+    <tr>
+        <td> 200 </td>
+        <td> thunderstorm with light rain </td>
+        
+    </tr>
+    <tr>
+        <td> 201 </td>
+        <td> thunderstorm with rain </td>
+        
+    </tr>
+    <tr>
+        <td> 202 </td>
+        <td> thunderstorm with heavy rain </td>
+
+    </tr>
+    <tr>
+        <td> 210 </td>
+        <td> light thunderstorm </td>
+
+    </tr>
+    <tr>
+        <td> 211 </td>
+        <td> thunderstorm </td>
+
+    </tr>
+    <tr>
+        <td> 212 </td>
+        <td> heavy thunderstorm </td>
+
+    </tr>
+    <tr>
+        <td> 221 </td>
+        <td> ragged thunderstorm </td>
+
+    </tr>
+    <tr>
+        <td> 230 </td>
+        <td> thunderstorm with light drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 231 </td>
+        <td> thunderstorm with drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 232 </td>
+        <td> thunderstorm with heavy drizzle </td>
+
+    </tr>
+</table>
+<br>
+<a id="Group 3xx: Drizzle"></a>
+<table class="table table-bordered">
+    
+    <thead>
+        <th>ID</th>
+        <th>Meaning</th>
+
+    </thead>
+    <tr>
+        <td> 300 </td>
+        <td> light intensity drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 301 </td>
+        <td> drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 302 </td>
+        <td> heavy intensity drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 310 </td>
+        <td> light intensity drizzle rain </td>
+
+    </tr>
+    <tr>
+        <td> 311 </td>
+        <td> drizzle rain </td>
+
+    </tr>
+    <tr>
+        <td> 312 </td>
+        <td> heavy intensity drizzle rain </td>
+
+    </tr>
+    <tr>
+        <td> 313 </td>
+        <td> shower rain and drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 314 </td>
+        <td> heavy shower rain and drizzle </td>
+
+    </tr>
+    <tr>
+        <td> 321 </td>
+        <td> shower drizzle </td>
+
+    </tr>
+</table>
+<br>
+<a id="Group 5xx: Rain"></a>
+<table style="width:300px">
+    
+    <tr>
+        <th>ID</th>
+        <th>Meaning</th>
+        
+    </tr>
+    <tr>
+        <td> 500 </td>
+        <td> light rain </td>
+
+    </tr>
+    <tr>
+        <td> 501 </td>
+        <td> moderate rain </td>
+
+    </tr>
+    <tr>
+        <td> 502 </td>
+        <td> heavy intensity rain  </td>
+
+    </tr>
+    <tr>
+        <td> 503 </td>
+        <td> very heavy rain </td>
+
+    </tr>
+    <tr>
+        <td> 504 </td>
+        <td> extreme rain </td>
+
+    </tr>
+    <tr>
+        <td> 511 </td>
+        <td> freezing rain </td>
+
+    </tr>
+    <tr>
+        <td> 520 </td>
+        <td> light intensity shower rain  </td>
+        
+    </tr>
+    <tr>
+        <td> 521 </td>
+        <td> shower rain </td>
+        
+    </tr>
+    <tr>
+        <td> 522 </td>
+        <td> heavy intensity shower rain </td>
+        
+    </tr>
+    <tr>
+        <td> 531 </td>
+        <td> ragged shower rain </td>
+        
+    </tr>
+</table>
+<br>
+	<a id="Group 6xx: Snow"></a>
+	<table class="table table-bordered">
+	    
+		<thead>
+			<th>ID</th>
+			<th>Meaning</th>
+			
+		</thead>
+		<tr>
+			<td> 600 </td>
+			<td> light snow </td>
+			
+		</tr>
+		<tr>
+			<td> 601 </td>
+			<td> snow </td>
+			
+		</tr>
+		<tr>
+			<td> 602 </td>
+			<td> heavy snow </td>
+			
+		</tr>
+		<tr>
+			<td> 611 </td>
+			<td> sleet </td>
+			
+		</tr>
+		<tr>
+			<td> 612 </td>
+			<td> shower sleet </td>
+			
+		</tr>
+		<tr>
+			<td> 615 </td>
+			<td> light rain and snow </td>
+			
+		</tr>
+		<tr>
+			<td> 616 </td>
+			<td> rain and snow </td>
+			
+		</tr>
+		<tr>
+			<td> 620 </td>
+			<td> light shower snow </td>
+			
+		</tr>
+		<tr>
+			<td> 621 </td>
+			<td> shower snow </td>
+			
+		</tr>
+		<tr>
+			<td> 622 </td>
+			<td> heavy shower snow </td>
+			
+		</tr>
+	</table>
+
+
+<br>
+
+	<a id="Group 7xx: Atmosphere"></a>
+  <table class="table table-bordered">
+		<tr>
+			<th>ID </th>
+			<th> Meaning </th>
+			
+		</tr>
+		<tr>
+			<td> 701 </td>
+			<td> mist </td>
+			
+		</tr>
+		<tr>
+			<td> 711 </td>
+			<td> smoke </td>
+			
+		</tr>
+		<tr>
+			<td> 721 </td>
+			<td> haze </td>
+			
+		</tr>
+		<tr>
+			<td> 731 </td>
+			<td> sand, dust whirls </td>
+			
+		</tr>
+		<tr>
+			<td> 741 </td>
+			<td> fog </td>
+			
+		</tr>
+		<tr>
+			<td>751 </td>
+			<td> sand </td>
+			
+		</tr>
+		<tr>
+			<td>761 </td>
+			<td> dust </td>
+			
+		</tr>
+		<tr>
+			<td>762 </td>
+			<td> volcanic ash </td>
+			
+		</tr>
+		<tr>
+			<td>771 </td>
+			<td> squalls </td>
+			
+		</tr>
+		<tr>
+			<td>781 </td>
+			<td> tornado </td>
+			
+		</tr>
+	</table>
+
+
+<br>
+	<a id="Group 800: Clear"></a>
+	<table class="table table-bordered">
+		<tr>
+			<th>ID </th>
+			<th> Meaning </th>
+
+		</tr>
+		<tr>
+			<td> 800 </td>
+			<td> clear sky </td>
+
+		</tr>
+	</table>
+
+
+
+<br>
+	<a id="Group 8xx: Clouds"></a>
+<table width="500">
+		<tr>
+			<th>ID </th>
+			<th> Meaning </th>
+
+		</tr>
+		<tr>
+			<td> 801 </td>
+			<td> few clouds  </td>
+
+		</tr>
+		<tr>
+			<td> 802 </td>
+			<td> scattered clouds  </td>
+
+		</tr>
+		<tr>
+			<td> 803 </td>
+			<td> broken clouds  </td>
+
+		</tr>
+		<tr>
+			<td> 804 </td>
+			<td> overcast clouds  </td>
+
+		</tr>
+	</table>
+
+  <hr>
+  <h3>Short weather codes</h3>
+  <p>Often times when creating a weather function in an application or game the many detailed options for the types of weather are not needed. In this 
+      case you can use the basic version which simplifies that types of weather options down to the basic six.
+  <table >
+		<tr>
+			<th>ID </th>
+			<th> Meaning </th>
+
+		</tr>
+		<tr>
+			<td> 0 </td>
+			<td> Clear skies  </td>
+
+		</tr>
+    <tr>
+			<td> 3 </td>
+			<td> Rain of any amount or intensity </td>
+
+		</tr>
+		<tr>
+			<td> 6 </td>
+			<td> Snow of any amount or intensity </td>
+
+		</tr>
+		<tr>
+			<td> 7 </td>
+			<td> Haze or atmospheric conditions such as sand storms and smoke  </td>
+
+		</tr>
+		
+
+    <tr>
+			<td> 8 </td>
+			<td> Any type of cloudy conditions  </td>
+
+		</tr>
+	</table>
+    
+</body></html>

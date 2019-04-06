@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Real Weather Documentation</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="./assets/css/docs_style.css">
+  </head>
+  
+  <body>
+      
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Real Weather Unity Plugins</h1>
+      <h2 class="project-tagline">Below are examples and API docs for both the Real Weather system and Real Weather Particle system.</h2>
+      
+        <a href="index.html" class="btn">Home</a> 
+        <a href="docs.html" class="btn">Getting Started</a>            
+        <a href="weatherAPI.html" class="btn">Real Weather API Docs</a>
+        <a href="rwp_docs.html" class="btn">Real Weather Particle Docs</a>            
+    </header>
+
+    <main id="content" class="main-content" role="main">
+<a id="getting_started"></a>
+<h2 id="header-2">Getting Started</h2>
+
+Using the Real Weather system follows these easy steps:
+<ol>
+    <li>Install the asset from the Asset Store</li>
+    <li>Get a free weather API key</li>
+    <li>Drag the RealWeather pre-fab to your scene</li>
+    <li>Enter your API key in to the prefab</li>
+    <li>Start using the Real Weather system via code or from properties in the inspector</li>
+    <li>Optionally you can get a free API key to lookup location by IP address. More info below.</li>
+  </ol>
+<h2 id="header-2">Getting the weather API key</h2>
+<p>The first step for weather or location lookup are to get your free API keys. You will want to go to the <a href="https://openweathermap.org/api">OpenWeatherMap API</a> page to 
+  sign-up for a FREE key. If you want some of the features of the other non-free plans those API keys will still work but 
+  are not required for your application to get real weather. 
+</p>
+<p>
+  Get API key here:<a href="https://openweathermap.org/api"> https://openweathermap.org/api</a>
+</p>
+<p>
+  The API key will generally be emailed to you within minutes but could take up to <b>two hours</b>
+  to become fully active. If you are getting access denied errors from the API ensure that
+  you have waited two hours for it to become active.
+</p>
+
+<h2 id="header-2">Add the prefab to your scene</h2>
+<p>Next drag and drop the prefab which contains all of the weather logic.</p>
+<img src="assets/images/DragDropPrefab.gif">
+
+
+<h2 id="header-2">Add your API key</h2>
+<p>
+  Enter your OpenWeatherMap API key in to the property field.
+</p>
+<img src="assets/images/WeatherAPIKey.gif">
+
+<h2 id="header-3">Start getting weather</h2>
+<p>
+  At this point you're ready to start getting real weather for your application. You have two options
+  for getting the weather data. The first is to access it via code and utilize the both simple and fully
+  featured API. The full API docs can be found <a href="RealWeatherAPI.html">here</a>.
+</p>
+<p>
+  Here are some examples of how to access via source code. All of these assume you have set your instance of <i>wx</i> to the prefab instance you put in your scene. They also all pass in a callback function called updateWeather. The last example shows
+  and example of how you could implenent the updateWeather callback. Generally this callback will be where you update your UI or other code.
+</p>
+
+
+<div class="language-js highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+        <span class="c1">// Getting weather by city name.</span>
+        <span class="sf">
+          public RealWeather wx;
+          wx.getWeatherFromCityName("Paris", "FR", updateWeather);
+        </span> 
+      </code>
+    </pre>
+  </div>
+</div>
+
+<div class="language-js highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+        <span class="c1">// Getting weather from lat/lon.</span>
+        <span class="sf">
+          public RealWeather wx;
+          wx.getWeatherFromLatLon(40.8221f, 140.7474f, updateWeather);
+        </span> 
+      </code>
+    </pre>
+  </div>
+</div>
+
+<div class="language-js highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+        <span class="c1">// Getting weather from a zip code.</span>
+        <span class="sf">
+          public RealWeather wx;
+          wx.getWeatherFromZip("90210", "US", updateWeather);
+        </span> 
+      </code>
+    </pre>
+  </div>
+</div>
+
+
+<div class="language-js highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+        <span class="c1">// Getting weather from the users location.</span>
+        <span class="sf">
+          public RealWeather wx;
+          
+          public void getUsersLocalWeather() {
+            wx.getWeatherFromLatLon(40.8221f, 140.7474f, updateWeather);
+          }
+
+          public void updateWeather(WeatherData wxData) {	
+            Debug.Log("Temp = " + wxData.currentTempF + "°F / " +  wxData.currentTempC + "°C");
+          }
+        </span> 
+      </code>
+    </pre>
+  </div>
+</div>
+
+
+<h2 id="header-2">Using the object properties</h2>
+<p>The following is a screenshot of the RealWeather inspector after a call has been made to get the users weather. Once a call is
+  made the basic values are returned in these public variables. These properties can be referenced from other objects and prefabs
+  without having to write any code. Below the screenshot is a description of each field.
+</p>
+<img src="assets/images/WeatherInspector.gif">
+<p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Description</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Get Location On Start</td>
+      <td style="text-align: left">If you want to get the users location as soon as the instance's Start method is called turn this on.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Temp F</td>
+      <td style="text-align: left">The temperature in fahrenheit represented as an int.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Temp C</td>
+      <td style="text-align: left">The temperature in celsius represented as an int.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Temp F String</td>
+      <td style="text-align: left">The temperature in fahrenheit represented as a string.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Temp C String</td>
+      <td style="text-align: left">The temperature in celsius represented as a string.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Weather Code</td>
+      <td style="text-align: left">A numerical representation of the current weather from the full detailed list. The API has the full list of codes.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Simple Weather Code</td>
+      <td style="text-align: left">A numerical representation of the current weather reduced down the large list to six basic types. The API has the six types.</td>      
+    </tr>
+    <tr>
+      <td style="text-align: left">Full description</td>
+      <td style="text-align: left">The longer full multi word description.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Short description</td>
+      <td style="text-align: left">A shorter description only using the six basic types from the simple weather code list.</td>
+    </tr>
+  </tbody>
+</table>
+</p>
+
+<h2>Optional IP lookup API</h2>
+<p>
+  Not all devices have location services or GPS chips that can be leveraged to get the users exact location. Good examples are consoles and desktop computers. In this
+  situation you have the option of using another free API which will use the users IP address to lookup their approximate location. This is built in to the Real Weather
+  system so there is nothing extra you have to do outside of entering in the API key shown below. You can get this free API key <a href="https://ipstack.com/product">here</a> at IPStack. 
+
+  <p>
+    <img src="assets/images/LocAPIKey.gif">
+  </p>
+
+</code></pre></div></div>
+
+
+
+</body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Real Weather Documentation</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="./assets/css/docs_style.css">
+  </head>
+  
+  <body>
+      
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Real Weather Unity Plugins</h1>
+      <h2 class="project-tagline">Below are examples and API docs for both the Real Weather system and Real Weather Particle system.</h2>
+      
+        <a href="index.html" class="btn">Home</a> 
+        <a href="docs.html" class="btn">Getting Started</a>            
+        <a href="weatherAPI.html" class="btn">Real Weather API Docs</a>
+        <a href="rwp_docs.html" class="btn">Real Weather Particle Docs</a>            
+    </header>
+
+    <main id="content" class="main-content" role="main">
+<a id="getting_started"></a>
+<h2 id="header-2">Getting Started</h2>
+
+Using the Real Weather system follows these easy steps:
+<ol>
+    <li>Install the asset from the Asset Store</li>
+    <li>Add a WeatherSystem to your scene</li>
+    <li>Calling the API with your choice of weather condidtions</li>
+    <li>Calling the clear API to stop the weather</li>
+ 
+  </ol>
+<h2 id="header-2">Adding a WeatherSystem to your scene</h2>
+<p>Once the asset is installed into your project, you can drag and drop a WeatherSystem into your scene.
+    The WeatherSystem prefab is located in Simple Weather > Prefabs.
+</p>
+<img src="assets/images/RWP_Step2.gif">
+
+
+
+<h2 id="header-2">Calling the API</h2>
+<p>Calling the API is very simple. Every weather type has it's own function you can call. There are 6
+    weather functions to choose from. The 6 weather funtions are:
+    <ul>
+        <li>startRain()</li>
+        <li>startSnow()</li>
+        <li>startHaze()</li>
+        <li>startClouds()</li>
+        <li>startThunder()</li>
+        <li>clear()</li>
+    </ul>
+     Calling a "start" function will turn on that type of weather. 
+    The only way to clear your weather or turn one system off is by calling the clear function.</p>
+<img src="assets/images/WeatherAPIKey.gif">
+
+
+<h2 id="header-2">Implemeting your WeatherSystem</h2>
+<p>
+  First create a WeatherController. This is the GameObject that holds the script which we will use to make API calls and turn weather elements on and off.
+   To control the weather system make a basic script. Copy and paste the
+  code below into a new script called Weather. In the script, define a variable called WS of the type WeatherSystem, and make it public.
+  Then in the start function, call the startSnow function. When you run this basic scene you 
+  should see snow begin to fall.
+</p>
+<img src="assets/images/RWP_Step3_tk2.gif">
+
+<div class="language-js highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+        <span class="c1">//Turning on Snow</span>
+        <span class="sf">
+          using UnityEngine;
+
+          public class Weather : MonoBehaviour {
+
+          	public WeatherSystem WS;
+
+                void Start () {
+                  WS.startSnow();
+                }
+            }
+        </span> 
+      </code>
+    </pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
